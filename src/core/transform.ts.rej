@@ -1,0 +1,14 @@
+diff a/src/core/transform.ts b/src/core/transform.ts	(rejected hunks)
+@@ -3,2 +3,6 @@ import { AxiosTransformer } from '../type'
+-export default function transfrom(data: any, header: any, fns?: AxiosTransformer[] | AxiosTransformer): any {
+-  if(!fns){
++export default function transfrom(
++  data: any,
++  header: any,
++  fns?: AxiosTransformer[] | AxiosTransformer
++): any {
++  if (!fns) {
+@@ -8,2 +12 @@ export default function transfrom(data: any, header: any, fns?: AxiosTransformer
+-
+-  if(Array.isArray(fns)){
++  if (Array.isArray(fns)) {

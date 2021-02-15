@@ -1,19 +1,18 @@
 import { AxiosTransformer } from '../type'
 
-export default function transfrom(
+export default function transform(
   data: any,
   header: any,
-  fns?: AxiosTransformer[] | AxiosTransformer
+  fns?: AxiosTransformer | AxiosTransformer[]
 ): any {
   if (!fns) {
     return data
   }
 
-  if (Array.isArray(fns)) {
-    // @ts-ignore
+  if (!Array.isArray(fns)) {
     fns = [fns]
   }
-  // @ts-ignore
+
   fns.forEach(fn => {
     // 链式调用
     data = fn(data, header)

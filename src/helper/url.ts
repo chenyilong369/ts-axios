@@ -8,6 +8,11 @@
  */
 import { isDate, isObject } from './util'
 
+interface URLOrigin {
+  protocol: string
+  host: string
+}
+
 function encode(url: string): string {
   return encodeURIComponent(url)
     .replace(/%40/g, '@')
@@ -56,4 +61,25 @@ export function BuildUrl(url: string, param?: any): string {
   }
 
   return url
+}
+
+// 判断请求页面是否与当前页面同源
+export function isURLSameOrigin(requestURL: string): boolean {
+  const parseOrigin = resolveURL(requestURL)
+  return parseOrigin.protocol === currentOrigin.protocol && parseOrigin.host === currentOrigin.host
+}
+
+const urlParsingNode = document.createElement('a')
+const currentOrigin = resolveURL(window.location.href)
+
+// 解析host, protocol
+// 创建一个节点
+function resolveURL(url: string): URLOrigin {
+  urlParsingNode.setAttribute('href', url)
+  const { protocol, host } = urlParsingNode
+
+  return {
+    protocol,
+    host
+  }
 }

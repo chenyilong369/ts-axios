@@ -1,0 +1,7 @@
+diff a/src/helper/url.ts b/src/helper/url.ts	(rejected hunks)
+@@ -50 +50 @@ export function BuildUrl(url: string, param?: any): string {
+-  if(serializedParams) {
++  if (serializedParams) {
+@@ -52 +52 @@ export function BuildUrl(url: string, param?: any): string {
+-    if(hashIndex !== -1){
++    if (hashIndex !== -1) {

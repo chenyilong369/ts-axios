@@ -6,7 +6,8 @@
  * @Description: In User Settings Edit
  * @FilePath: \ts-axios\src\helper\headers.ts
  */
-import { isPlainObject } from './util'
+import { deepMerge, isPlainObject } from './util'
+import { Method } from '../type'
 
 function normalizeContent(headers: any, normalize: string): void {
   if (!headers) return
@@ -47,4 +48,21 @@ export function parseHeaders(headers: string): any {
     parsed[key] = val
   })
   return parsed
+}
+
+// 合并header(j降级)， 提取内部信息
+export function flatterMethods(header: any, method: Method): any {
+  if (!header) {
+    return header
+  }
+
+  header = deepMerge(header.common, header[method], header)
+
+  const methodsToDelete = ['delete', 'get', 'head', 'options', 'post', 'put', 'patch', 'common']
+
+  methodsToDelete.forEach(method => {
+    delete header[method]
+  })
+
+  return header
 }

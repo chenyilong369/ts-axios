@@ -4,7 +4,7 @@
  * @LastEditTime: 2020-08-06 08:46:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \ts-axios\example\simple\webpack.config.js
+ * @FilePath: \ts-axios\example\simple\webpack.configs.js
  */
 const fs = require('fs')
 const path = require('path')
@@ -43,6 +43,13 @@ module.exports = {
             transpileOnly: true
           }
         }]
+      },
+      {
+        test: /\.css?$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
       }
     ]
   },

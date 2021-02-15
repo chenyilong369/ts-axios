@@ -1,0 +1,5 @@
+diff a/src/core/xhr.ts b/src/core/xhr.ts	(rejected hunks)
+@@ -58,2 +58 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
+-      reject(createError(`Timeout of ${timeout} ms exceeded`,
+-        config, 'E CONNECTED', request))
++      reject(createError(`Timeout of ${timeout} ms exceeded`, config, 'E CONNECTED', request))
